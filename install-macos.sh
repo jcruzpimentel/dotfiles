@@ -77,6 +77,14 @@ else
     echo "✓ zoxide already installed"
 fi
 
+# oh-my-posh (prompt theme engine)
+if ! command -v oh-my-posh &> /dev/null; then
+    echo "📦 Installing oh-my-posh..."
+    brew install oh-my-posh
+else
+    echo "✓ oh-my-posh already installed"
+fi
+
 echo ""
 echo "✅ Installation Complete!"
 echo ""

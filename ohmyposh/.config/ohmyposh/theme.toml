@@ -1,0 +1,75 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+# Color palette matching zenbones-zenwritten-dark Alacritty theme
+# Semantic naming based on purpose
+[palette]
+  path = '#6099c0'              # Directory path (blue)
+  git = '#66a5ad'               # Git branch and status (cyan)
+  timing = '#b77e64'            # Command execution time (yellow)
+  prompt_success = '#b279a7'    # Prompt chevron on success (magenta)
+  prompt_error = '#de6e7c'      # Prompt chevron on error (red)
+  accent = '#819b69'            # Future use (green)
+  text = '#bbbbbb'              # Default foreground text
+  bg = '#191919'                # Background
+
+[secondary_prompt]
+  template = '❯❯ '
+  foreground = 'p:prompt_success'
+
+[transient_prompt]
+  template = '❯ '
+  foreground = 'p:prompt_success'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = '{{ .Path }} '
+    foreground = 'p:path'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'full'
+
+  [[blocks.segments]]
+    template = '{{ .HEAD }}{{if .Working.Changed}} *{{end}} '
+    foreground = 'p:git'
+    type = 'git'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      fetch_status = true
+
+[[blocks]]
+  type = 'rprompt'
+
+  [[blocks.segments]]
+    template = '{{ .FormattedMs }} '
+    foreground = 'p:timing'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'round'
+      threshold = 5000
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '❯ '
+    type = 'text'
+    style = 'plain'
+    foreground_templates = ['{{if gt .Code 0}}p:prompt_error{{end}}', '{{if eq .Code 0}}p:prompt_success{{end}}']
+
+    [blocks.segments.properties]
+      cache_duration = 'none'

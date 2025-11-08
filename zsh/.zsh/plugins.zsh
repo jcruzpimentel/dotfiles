@@ -25,6 +25,16 @@ if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd zsh)"
 fi
 
+# oh-my-posh - prompt theme engine
+if command -v oh-my-posh &> /dev/null; then
+    # Use custom theme if it exists, otherwise use default
+    if [ -f ~/.config/ohmyposh/theme.toml ]; then
+        eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/theme.toml)"
+    else
+        eval "$(oh-my-posh init zsh)"
+    fi
+fi
+
 # Additional completion definitions
 zinit light zsh-users/zsh-completions
 

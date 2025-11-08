@@ -63,6 +63,14 @@ case $OS in
             echo "✓ zoxide already installed"
         fi
 
+        # Install oh-my-posh (prompt theme engine)
+        if ! command -v oh-my-posh &> /dev/null; then
+            echo "📦 Installing oh-my-posh..."
+            curl -s https://ohmyposh.dev/install.sh | bash -s
+        else
+            echo "✓ oh-my-posh already installed"
+        fi
+
         # Install Homebrew for Linux (optional but recommended)
         if ! command -v brew &> /dev/null; then
             echo "📦 Installing Homebrew for Linux..."
@@ -113,6 +121,14 @@ case $OS in
         else
             echo "✓ zoxide already installed"
         fi
+
+        # Install oh-my-posh (prompt theme engine)
+        if ! command -v oh-my-posh &> /dev/null; then
+            echo "📦 Installing oh-my-posh..."
+            curl -s https://ohmyposh.dev/install.sh | bash -s
+        else
+            echo "✓ oh-my-posh already installed"
+        fi
         ;;
 
     arch|manjaro)
@@ -154,6 +170,14 @@ case $OS in
             sudo pacman -S --noconfirm zoxide
         else
             echo "✓ zoxide already installed"
+        fi
+
+        # Install oh-my-posh (prompt theme engine)
+        if ! command -v oh-my-posh &> /dev/null; then
+            echo "📦 Installing oh-my-posh..."
+            curl -s https://ohmyposh.dev/install.sh | bash -s
+        else
+            echo "✓ oh-my-posh already installed"
         fi
         ;;
 
