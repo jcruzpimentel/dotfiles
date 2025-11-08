@@ -47,6 +47,22 @@ case $OS in
             echo "✓ Zsh already installed"
         fi
 
+        # Install fzf
+        if ! command -v fzf &> /dev/null; then
+            echo "📦 Installing fzf..."
+            sudo apt install -y fzf
+        else
+            echo "✓ fzf already installed"
+        fi
+
+        # Install zoxide (smarter cd)
+        if ! command -v zoxide &> /dev/null; then
+            echo "📦 Installing zoxide..."
+            curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+        else
+            echo "✓ zoxide already installed"
+        fi
+
         # Install Homebrew for Linux (optional but recommended)
         if ! command -v brew &> /dev/null; then
             echo "📦 Installing Homebrew for Linux..."
@@ -81,6 +97,22 @@ case $OS in
         else
             echo "✓ Zsh already installed"
         fi
+
+        # Install fzf
+        if ! command -v fzf &> /dev/null; then
+            echo "📦 Installing fzf..."
+            sudo dnf install -y fzf
+        else
+            echo "✓ fzf already installed"
+        fi
+
+        # Install zoxide (smarter cd)
+        if ! command -v zoxide &> /dev/null; then
+            echo "📦 Installing zoxide..."
+            curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+        else
+            echo "✓ zoxide already installed"
+        fi
         ;;
 
     arch|manjaro)
@@ -106,6 +138,22 @@ case $OS in
             chsh -s $(which zsh)
         else
             echo "✓ Zsh already installed"
+        fi
+
+        # Install fzf
+        if ! command -v fzf &> /dev/null; then
+            echo "📦 Installing fzf..."
+            sudo pacman -S --noconfirm fzf
+        else
+            echo "✓ fzf already installed"
+        fi
+
+        # Install zoxide (smarter cd)
+        if ! command -v zoxide &> /dev/null; then
+            echo "📦 Installing zoxide..."
+            sudo pacman -S --noconfirm zoxide
+        else
+            echo "✓ zoxide already installed"
         fi
         ;;
 

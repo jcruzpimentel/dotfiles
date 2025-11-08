@@ -61,6 +61,22 @@ fi
 # Zsh (macOS comes with zsh, but we ensure it's up to date)
 brew install zsh
 
+# fzf (fuzzy finder)
+if ! command -v fzf &> /dev/null; then
+    echo "📦 Installing fzf..."
+    brew install fzf
+else
+    echo "✓ fzf already installed"
+fi
+
+# zoxide (smarter cd)
+if ! command -v zoxide &> /dev/null; then
+    echo "📦 Installing zoxide..."
+    brew install zoxide
+else
+    echo "✓ zoxide already installed"
+fi
+
 echo ""
 echo "✅ Installation Complete!"
 echo ""
