@@ -5,10 +5,12 @@ Personal dotfiles managed with GNU Stow for easy deployment across multiple mach
 ## Features
 
 - **Modular Zsh Configuration**: Split into logical modules for easy maintenance
-- **Cross-Platform**: Works on macOS (Apple Silicon) and Linux
+- **Cross-Platform Terminal**: Alacritty config works on macOS, Linux, and Windows (WSL2)
+- **Cross-Platform Shell**: Works on macOS (Apple Silicon), Linux, and Windows (WSL2)
 - **SSH Agent**: Automatic SSH key loading with OS-specific keychain support
 - **Machine-Specific Configs**: Gitignored local configurations for per-machine customization
 - **GNU Stow**: Simple symlink management
+- **Multiple Color Themes**: Easy-to-switch Alacritty themes included
 
 ## Structure
 
@@ -21,58 +23,75 @@ dotfiles/
 │       ├── env.zsh         # Environment variables
 │       ├── local.zsh       # Machine-specific (gitignored)
 │       └── ssh-agent.zsh   # SSH agent + key loading
-└── ssh/
-    └── .ssh/
-        ├── config          # Shared SSH config
-        ├── config.local.example  # Template for machine-specific
-        └── config.d/       # Optional shared host configs
+├── ssh/
+│   └── .ssh/
+│       ├── config          # Shared SSH config
+│       ├── config.local.example  # Template for machine-specific
+│       └── config.d/       # Optional shared host configs
+├── alacritty/
+│   └── .config/alacritty/
+│       ├── alacritty.toml  # Main Alacritty config
+│       └── themes/         # Color scheme collection
+├── install-macos.sh        # Automated setup for macOS
+└── install-windows-wsl.sh  # Automated setup for Windows WSL2
 ```
 
 ## Installation
 
-### Prerequisites
+### Quick Install
 
-- Git
-- GNU Stow
-- Zsh
-
-### On macOS
-
+**macOS:**
 ```bash
-# Install Homebrew if needed
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install stow
-brew install stow
+git clone https://gitlab.jcruzpimentel.dev/jcruzpimentel/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./install-macos.sh
 ```
 
-### On Linux
-
+**Windows WSL2:**
 ```bash
-# Debian/Ubuntu
-sudo apt install stow
-
-# Arch
-sudo pacman -S stow
-
-# Fedora
-sudo dnf install stow
+git clone https://gitlab.jcruzpimentel.dev/jcruzpimentel/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./install-windows-wsl.sh
 ```
 
-### Setup
+The install scripts will:
+- Install all dependencies (Homebrew, Stow, Alacritty, Fonts, etc.)
+- Guide you through deploying dotfiles with Stow
+
+### Manual Installation
 
 1. Clone this repository:
    ```bash
-   git clone <your-repo-url> ~/dotfiles
+   git clone https://gitlab.jcruzpimentel.dev/jcruzpimentel/dotfiles.git ~/dotfiles
    cd ~/dotfiles
    ```
 
-2. Deploy with stow:
+2. Install dependencies:
+
+   **macOS:**
    ```bash
-   stow zsh ssh
+   brew install stow
+   brew install --cask alacritty
+   brew install --cask font-fantasque-sans-mono-nerd-font
    ```
 
-3. Create machine-specific configurations:
+   **Linux (Debian/Ubuntu):**
+   ```bash
+   sudo apt install stow zsh git
+   ```
+
+   **Linux (Arch):**
+   ```bash
+   sudo pacman -S stow zsh git
+   ```
+
+3. Deploy with Stow:
+   ```bash
+   cd ~/dotfiles
+   stow zsh ssh alacritty
+   ```
+
+4. Create machine-specific configurations:
    ```bash
    # Create local SSH config for this machine
    cp ssh/.ssh/config.local.example ~/.ssh/config.local
@@ -82,7 +101,7 @@ sudo dnf install stow
    # Edit ~/.zsh/local.zsh and update the SSH_KEYS array
    ```
 
-4. Reload your shell:
+5. Restart your terminal or reload shell:
    ```bash
    source ~/.zshrc
    ```
@@ -124,6 +143,43 @@ echo 'alias ll="ls -la"' >> ~/dotfiles/zsh/.zsh/aliases.zsh
 
 The main `.zshrc` automatically sources all `.zsh` files.
 
+### Changing Alacritty Color Themes
+
+Edit `~/.config/alacritty/alacritty.toml` and change the import line:
+
+```toml
+import = [
+    "~/.config/alacritty/themes/gruvbox-dark.toml"  # Change this line
+]
+```
+
+**Available themes:**
+- `tokyo-night.toml` - Modern neon-influenced
+- `gruvbox-dark.toml` - Warm retro-inspired
+- `catppuccin-mocha.toml` - Pastel soothing
+- `dracula.toml` - Vibrant purples/pinks
+- `nord.toml` - Cool arctic blues
+- `zenbones-zenwritten-dark.toml` - Custom theme
+
+Preview themes at: https://alacritty-themes.vercel.app/
+
+### Windows WSL2 Configuration
+
+For Alacritty on Windows to use WSL, edit `~/.config/alacritty/alacritty.toml`:
+
+```toml
+[shell]
+# Comment out the macOS/Linux shell:
+# program = "/bin/zsh"
+# args = ["--login"]
+
+# Uncomment for Windows WSL2:
+program = "wsl.exe"
+args = ["~"]
+```
+
+**Note:** Alacritty must be installed on Windows (not in WSL). Your WSL dotfiles config will still be accessible from the Windows Alacritty terminal.
+
 ## Updating
 
 ```bash
@@ -137,7 +193,7 @@ Changes are reflected immediately since files are symlinked.
 
 ```bash
 cd ~/dotfiles
-stow -D zsh ssh
+stow -D zsh ssh alacritty
 ```
 
 This removes all symlinks but preserves your local configs.
