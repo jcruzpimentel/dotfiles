@@ -1,0 +1,23 @@
+# Machine-specific configurations
+zsh/.zsh/local.zsh
+
+# SSH keys and machine-specific SSH config
+ssh/.ssh/config.local
+ssh/.ssh/id_*
+ssh/.ssh/*.pem
+ssh/.ssh/*.key
+ssh/.ssh/known_hosts
+ssh/.ssh/authorized_keys
+
+# macOS specific
+.DS_Store
+
+# Vim/Editor files
+*.swp
+*.swo
+*~
+.*.swp
+
+# Local test files
+test_*
+*.local
