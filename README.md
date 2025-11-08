@@ -22,6 +22,7 @@ dotfiles/
 │   └── .zsh/
 │       ├── env.zsh         # Environment variables
 │       ├── local.zsh       # Machine-specific (gitignored)
+│       ├── plugins.zsh     # Zinit plugin manager + plugin definitions
 │       └── ssh-agent.zsh   # SSH agent + key loading
 ├── ssh/
 │   └── .ssh/
@@ -142,6 +143,26 @@ echo 'alias ll="ls -la"' >> ~/dotfiles/zsh/.zsh/aliases.zsh
 ```
 
 The main `.zshrc` automatically sources all `.zsh` files.
+
+### Adding Zsh Plugins with Zinit
+
+Zinit is automatically installed on first shell startup. Add plugins to `~/.zsh/plugins.zsh`:
+
+```zsh
+# Example popular plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+```
+
+**Popular plugins:**
+- `zsh-users/zsh-syntax-highlighting` - Fish-like syntax highlighting
+- `zsh-users/zsh-completions` - Additional completion definitions
+- `zsh-users/zsh-autosuggestions` - Fish-like autosuggestions
+- `zdharma-continuum/fast-syntax-highlighting` - Faster syntax highlighting
+- `Aloxaf/fzf-tab` - Replace zsh tab completion with fzf
+
+After adding plugins, reload your shell: `source ~/.zshrc`
 
 ### Changing Alacritty Color Themes
 

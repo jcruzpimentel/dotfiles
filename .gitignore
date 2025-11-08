@@ -1,6 +1,9 @@
 # Machine-specific configurations
 zsh/.zsh/local.zsh
 
+# Zinit and plugins (installed locally)
+.local/
+
 # SSH keys and machine-specific SSH config
 ssh/.ssh/config.local
 ssh/.ssh/id_*
