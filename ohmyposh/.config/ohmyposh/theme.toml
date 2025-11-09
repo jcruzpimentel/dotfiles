@@ -15,11 +15,11 @@ final_space = true
   bg = '#191919'                # Background
 
 [secondary_prompt]
-  template = '❯❯'
+  template = '❯❯ '
   foreground = 'p:prompt_success'
 
 [transient_prompt]
-  template = '❯'
+  template = '❯ '
   background = 'transparent'
   foreground_templates = [
     '{{if gt .Code 0}}p:prompt_error{{end}}',

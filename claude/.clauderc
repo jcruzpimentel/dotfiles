@@ -1,0 +1,35 @@
+# Claude Code Environment Documentation
+# This file documents the modern CLI tools available in this environment
+# Managed via GNU Stow from ~/dotfiles/claude/.clauderc
+#
+# Note: Claude Code automatically detects and uses these tools when they're in PATH.
+# This file serves as documentation for developers and AI assistants.
+
+# Modern CLI Tools Available
+# --------------------------
+
+# File Operations:
+#   eza (ls)        - Modern ls with icons, git integration, tree views
+#   ripgrep (rg)    - Fast grep that respects .gitignore
+#   fd              - Fast find alternative (optional: brew install fd)
+#   bat             - Cat with syntax highlighting (optional: brew install bat)
+
+# Navigation:
+#   zoxide (z/zi)   - Smarter cd with frecency tracking
+#   fzf             - Fuzzy finder for interactive searches
+
+# Prompt:
+#   oh-my-posh      - Cross-platform prompt theme engine
+
+# Shell:
+#   zsh             - With zinit plugin manager
+#   zinit           - Fast ZSH plugin manager
+
+# Oh My Zsh Plugins Active:
+#   OMZP::git       - 500+ git aliases (gst, gaa, gcam, gp, etc.)
+#   OMZP::docker    - 80+ docker aliases (dls, dlo, dcud, etc.)
+#   OMZP::sudo      - ESC ESC to add sudo
+#   OMZP::command-not-found - Suggests packages to install
+#   OMZP::colored-man-pages - Colorizes man pages
+
+# For full alias documentation, see: ~/dotfiles/ALIASES.md

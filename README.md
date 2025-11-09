@@ -23,6 +23,7 @@ dotfiles/
 │       ├── env.zsh         # Environment variables
 │       ├── local.zsh       # Machine-specific (gitignored)
 │       ├── plugins.zsh     # Zinit plugin manager + plugin definitions
+│       ├── aliases.zsh     # eza and other tool aliases
 │       └── ssh-agent.zsh   # SSH agent + key loading
 ├── ssh/
 │   └── .ssh/
@@ -33,8 +34,14 @@ dotfiles/
 │   └── .config/alacritty/
 │       ├── alacritty.toml  # Main Alacritty config
 │       └── themes/         # Color scheme collection
+├── ohmyposh/
+│   └── .config/ohmyposh/
+│       └── theme.toml      # oh-my-posh prompt theme
+├── claude/
+│   └── .clauderc           # Claude Code configuration
 ├── install-macos.sh        # Automated setup for macOS
-└── install-windows-wsl.sh  # Automated setup for Windows WSL2
+├── install-windows-wsl.sh  # Automated setup for Windows WSL2
+└── ALIASES.md              # Comprehensive alias reference guide
 ```
 
 ## Installation
@@ -89,7 +96,7 @@ The install scripts will:
 3. Deploy with Stow:
    ```bash
    cd ~/dotfiles
-   stow zsh ssh alacritty
+   stow zsh ssh alacritty ohmyposh claude
    ```
 
 4. Create machine-specific configurations:
