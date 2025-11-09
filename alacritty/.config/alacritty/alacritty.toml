@@ -35,7 +35,7 @@ italic = { family = "FantasqueSansM Nerd Font", style = "Italic" }
 bold_italic = { family = "FantasqueSansM Nerd Font", style = "Bold Italic" }
 
 # Font size
-size = 14.0
+size = 18.0
 
 # Offset adjusts line spacing
 offset = { x = 0, y = 0 }

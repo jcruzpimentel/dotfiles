@@ -3,12 +3,132 @@
 Quick reference for all aliases and shortcuts available in this dotfiles configuration.
 
 ## Table of Contents
+- [Eza - Modern ls](#eza---modern-ls)
+- [Ripgrep - Fast grep](#ripgrep---fast-grep)
 - [Zoxide - Smarter cd](#zoxide---smarter-cd)
 - [Git Aliases (OMZP::git)](#git-aliases)
 - [Docker Aliases (OMZP::docker)](#docker-aliases)
 - [Sudo Plugin](#sudo-plugin)
 - [fzf Keyboard Shortcuts](#fzf-keyboard-shortcuts)
 - [History Navigation](#history-navigation)
+
+---
+
+## Eza - Modern ls
+
+Eza is a modern replacement for `ls` with icons, git integration, and beautiful output. It shows file icons, git status, and provides rich formatting.
+
+### Basic Usage
+
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `ls` | `eza --icons --group-directories-first` | List files with icons, directories first |
+| `ll` | `eza --icons --long --group-directories-first --git` | Long format with git status |
+| `la` | `eza --icons --long --all --group-directories-first --git` | Long format including hidden files |
+| `l` | `eza --icons --long --header --group --group-directories-first --git` | Long format with header and grouping |
+| `lh` | `eza --icons --long --header --group --all --group-directories-first --git` | Full details with hidden files |
+
+### Tree Views
+
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `lt` | `eza --icons --tree --level=2 --group-directories-first` | Tree view (2 levels deep) |
+| `lta` | `eza --icons --tree --level=2 --all --group-directories-first` | Tree view including hidden files |
+| `lt3` | `eza --icons --tree --level=3 --group-directories-first` | Tree view (3 levels deep) |
+
+### Examples
+
+**Basic listing with icons**:
+```bash
+ls              # Files with icons, dirs first
+ll              # Long format with git status
+la              # Include hidden files
+```
+
+**Tree views**:
+```bash
+lt              # See directory structure
+lta             # Include hidden in tree
+lt3             # Deeper tree view
+```
+
+### Features
+
+- **Icons**: File type icons for visual recognition
+- **Git integration**: Shows git status (modified, staged, etc.)
+- **Color coding**: Different colors for file types
+- **Human-readable sizes**: Automatic size formatting
+- **Directories first**: Easier navigation
+
+---
+
+## Ripgrep - Fast grep
+
+Ripgrep (`rg`) is an extremely fast grep alternative that's optimized for searching code. It automatically respects `.gitignore` and skips hidden files by default.
+
+### Basic Usage
+
+| Command | Description |
+|---------|-------------|
+| `rg pattern` | Search for pattern in current directory |
+| `rg pattern path/` | Search in specific directory |
+| `rg -i pattern` | Case-insensitive search |
+| `rg -w pattern` | Match whole words only |
+| `rg -v pattern` | Invert match (show non-matching lines) |
+
+### Advanced Usage
+
+| Command | Description |
+|---------|-------------|
+| `rg pattern -t js` | Search only in JavaScript files |
+| `rg pattern -g '*.ts'` | Search with glob pattern |
+| `rg pattern -A 3` | Show 3 lines after match |
+| `rg pattern -B 3` | Show 3 lines before match |
+| `rg pattern -C 3` | Show 3 lines before and after match |
+| `rg -l pattern` | List files with matches only |
+| `rg -c pattern` | Count matches per file |
+| `rg --hidden pattern` | Include hidden files |
+| `rg --no-ignore pattern` | Don't respect .gitignore |
+
+### File Type Filters
+
+| Command | Description |
+|---------|-------------|
+| `rg pattern -t py` | Search Python files |
+| `rg pattern -t js` | Search JavaScript files |
+| `rg pattern -t ts` | Search TypeScript files |
+| `rg pattern -t rust` | Search Rust files |
+| `rg pattern -t md` | Search Markdown files |
+| `rg --type-list` | Show all available file types |
+
+### Examples
+
+**Search for a function**:
+```bash
+rg "function myFunc"          # Find function definition
+rg -w myFunc                  # Match whole word only
+rg "myFunc\(" -t js           # In JS files with parenthesis
+```
+
+**Search with context**:
+```bash
+rg "TODO" -C 2                # Show 2 lines around matches
+rg "error" -A 5               # Show 5 lines after
+```
+
+**Search specific files**:
+```bash
+rg "import" -g '*.ts'         # Only TypeScript files
+rg "config" -g '!*test*'      # Exclude test files
+```
+
+### Why Ripgrep?
+
+- **Fast**: Optimized for speed, often faster than grep, ag, or ack
+- **Smart defaults**: Respects `.gitignore`, skips hidden files and binaries
+- **Recursive**: Searches subdirectories by default
+- **Color output**: Highlights matches automatically
+- **UTF-8**: Properly handles Unicode
 
 ---
 
@@ -435,9 +555,11 @@ dvprune            # Remove unused volumes
 
 **Most Used Commands**:
 ```
-Zoxide: cd <partial> cdi
-Git:    gst gaa gcam gp gco gcb gl glog
-Docker: dls dlo dcud dcd dxcit
-fzf:    Ctrl-R Ctrl-T Alt-C
-Other:  ESC-ESC (sudo)
+Eza:     ls ll la lt
+Ripgrep: rg "pattern" -t js -C 2
+Zoxide:  cd <partial> cdi
+Git:     gst gaa gcam gp gco gcb gl glog
+Docker:  dls dlo dcud dcd dxcit
+fzf:     Ctrl-R Ctrl-T Alt-C
+Other:   ESC-ESC (sudo)
 ```

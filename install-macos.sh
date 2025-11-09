@@ -85,6 +85,22 @@ else
     echo "✓ oh-my-posh already installed"
 fi
 
+# eza (modern ls replacement with icons and git integration)
+if ! command -v eza &> /dev/null; then
+    echo "📦 Installing eza..."
+    brew install eza
+else
+    echo "✓ eza already installed"
+fi
+
+# ripgrep (fast grep alternative)
+if ! command -v rg &> /dev/null; then
+    echo "📦 Installing ripgrep..."
+    brew install ripgrep
+else
+    echo "✓ ripgrep already installed"
+fi
+
 echo ""
 echo "✅ Installation Complete!"
 echo ""

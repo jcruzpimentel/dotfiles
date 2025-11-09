@@ -15,16 +15,21 @@ final_space = true
   bg = '#191919'                # Background
 
 [secondary_prompt]
-  template = '❯❯ '
+  template = '❯❯'
   foreground = 'p:prompt_success'
 
 [transient_prompt]
-  template = '❯ '
-  foreground = 'p:prompt_success'
+  template = '❯'
+  background = 'transparent'
+  foreground_templates = [
+    '{{if gt .Code 0}}p:prompt_error{{end}}',
+    '{{if eq .Code 0}}p:prompt_success{{end}}'
+  ]
 
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
+  newline = true
 
   [[blocks.segments]]
     template = '{{ .Path }} '
@@ -66,7 +71,7 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = '❯ '
+    template = '❯'
     type = 'text'
     style = 'plain'
     foreground_templates = ['{{if gt .Code 0}}p:prompt_error{{end}}', '{{if eq .Code 0}}p:prompt_success{{end}}']
