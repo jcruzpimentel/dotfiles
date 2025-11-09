@@ -21,8 +21,14 @@ fi
 
 # zoxide - smarter cd command with fzf integration
 # --cmd cd replaces the cd command to use zoxide
+# Only override cd in interactive shells to avoid breaking scripts/tools
 if command -v zoxide &> /dev/null; then
-    eval "$(zoxide init --cmd cd zsh)"
+    if [[ -o interactive ]]; then
+        eval "$(zoxide init --cmd cd zsh)"
+    else
+        # In non-interactive shells, just initialize zoxide without replacing cd
+        eval "$(zoxide init zsh)"
+    fi
 fi
 
 # oh-my-posh - prompt theme engine
