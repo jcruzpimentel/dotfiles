@@ -93,6 +93,35 @@ case $OS in
             echo "✓ ripgrep already installed"
         fi
 
+        # Install bat (cat replacement with syntax highlighting)
+        if ! command -v bat &> /dev/null; then
+            echo "📦 Installing bat..."
+            sudo apt install -y bat
+            # Create symlink if bat is installed as batcat (Ubuntu/Debian)
+            if command -v batcat &> /dev/null && [ ! -f ~/.local/bin/bat ]; then
+                mkdir -p ~/.local/bin
+                ln -s /usr/bin/batcat ~/.local/bin/bat
+            fi
+        else
+            echo "✓ bat already installed"
+        fi
+
+        # Install ncdu (disk usage analyzer)
+        if ! command -v ncdu &> /dev/null; then
+            echo "📦 Installing ncdu..."
+            sudo apt install -y ncdu
+        else
+            echo "✓ ncdu already installed"
+        fi
+
+        # Install btop (resource monitor)
+        if ! command -v btop &> /dev/null; then
+            echo "📦 Installing btop..."
+            sudo apt install -y btop
+        else
+            echo "✓ btop already installed"
+        fi
+
         # Install Homebrew for Linux (optional but recommended)
         if ! command -v brew &> /dev/null; then
             echo "📦 Installing Homebrew for Linux..."
@@ -167,6 +196,30 @@ case $OS in
         else
             echo "✓ ripgrep already installed"
         fi
+
+        # Install bat (cat replacement with syntax highlighting)
+        if ! command -v bat &> /dev/null; then
+            echo "📦 Installing bat..."
+            sudo dnf install -y bat
+        else
+            echo "✓ bat already installed"
+        fi
+
+        # Install ncdu (disk usage analyzer)
+        if ! command -v ncdu &> /dev/null; then
+            echo "📦 Installing ncdu..."
+            sudo dnf install -y ncdu
+        else
+            echo "✓ ncdu already installed"
+        fi
+
+        # Install btop (resource monitor)
+        if ! command -v btop &> /dev/null; then
+            echo "📦 Installing btop..."
+            sudo dnf install -y btop
+        else
+            echo "✓ btop already installed"
+        fi
         ;;
 
     arch|manjaro)
@@ -232,6 +285,30 @@ case $OS in
             sudo pacman -S --noconfirm ripgrep
         else
             echo "✓ ripgrep already installed"
+        fi
+
+        # Install bat (cat replacement with syntax highlighting)
+        if ! command -v bat &> /dev/null; then
+            echo "📦 Installing bat..."
+            sudo pacman -S --noconfirm bat
+        else
+            echo "✓ bat already installed"
+        fi
+
+        # Install ncdu (disk usage analyzer)
+        if ! command -v ncdu &> /dev/null; then
+            echo "📦 Installing ncdu..."
+            sudo pacman -S --noconfirm ncdu
+        else
+            echo "✓ ncdu already installed"
+        fi
+
+        # Install btop (resource monitor)
+        if ! command -v btop &> /dev/null; then
+            echo "📦 Installing btop..."
+            sudo pacman -S --noconfirm btop
+        else
+            echo "✓ btop already installed"
         fi
         ;;
 

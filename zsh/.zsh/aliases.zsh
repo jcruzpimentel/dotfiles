@@ -1,6 +1,15 @@
 # Aliases
 
 # ============================================================================
+# bat - Cat replacement with syntax highlighting
+# ============================================================================
+
+if command -v bat &> /dev/null; then
+    alias cat='bat --paging=never'
+    alias bcat='bat'  # Original bat with paging
+fi
+
+# ============================================================================
 # eza - Modern ls replacement with icons and git integration
 # ============================================================================
 

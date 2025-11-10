@@ -101,6 +101,30 @@ else
     echo "✓ ripgrep already installed"
 fi
 
+# bat (cat replacement with syntax highlighting)
+if ! command -v bat &> /dev/null; then
+    echo "📦 Installing bat..."
+    brew install bat
+else
+    echo "✓ bat already installed"
+fi
+
+# ncdu (disk usage analyzer with ncurses interface)
+if ! command -v ncdu &> /dev/null; then
+    echo "📦 Installing ncdu..."
+    brew install ncdu
+else
+    echo "✓ ncdu already installed"
+fi
+
+# btop (resource monitor)
+if ! command -v btop &> /dev/null; then
+    echo "📦 Installing btop..."
+    brew install btop
+else
+    echo "✓ btop already installed"
+fi
+
 echo ""
 echo "✅ Installation Complete!"
 echo ""

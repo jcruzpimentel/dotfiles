@@ -3,6 +3,7 @@
 Quick reference for all aliases and shortcuts available in this dotfiles configuration.
 
 ## Table of Contents
+- [Bat - Modern cat](#bat---modern-cat)
 - [Eza - Modern ls](#eza---modern-ls)
 - [Ripgrep - Fast grep](#ripgrep---fast-grep)
 - [Zoxide - Smarter cd](#zoxide---smarter-cd)
@@ -11,6 +12,57 @@ Quick reference for all aliases and shortcuts available in this dotfiles configu
 - [Sudo Plugin](#sudo-plugin)
 - [fzf Keyboard Shortcuts](#fzf-keyboard-shortcuts)
 - [History Navigation](#history-navigation)
+
+---
+
+## Bat - Modern cat
+
+Bat is a `cat` replacement with syntax highlighting, line numbers, and git integration. It provides beautiful, colorized output for viewing file contents with automatic language detection.
+
+### Basic Usage
+
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `cat` | `bat --paging=never` | Display file with syntax highlighting (no pager) |
+| `bcat` | `bat` | Original bat with paging enabled |
+
+### Examples
+
+**Basic file viewing**:
+```bash
+cat file.js          # View JavaScript file with syntax highlighting
+cat package.json     # View JSON with syntax highlighting
+cat README.md        # View Markdown with formatting
+```
+
+**Using original bat with pager** (for long files):
+```bash
+bcat large-file.py   # Opens in pager like less
+```
+
+### Features
+
+- **Syntax highlighting**: Automatic language detection for 200+ languages
+- **Line numbers**: Shows line numbers by default
+- **Git integration**: Shows git modifications in the gutter
+- **Non-printable characters**: Shows tabs and spaces
+- **Automatic paging**: Original `bat` command uses pager for long files
+- **Themes**: Customizable color themes
+
+### Why Bat?
+
+- **Beautiful output**: Syntax highlighting makes code easier to read
+- **Git aware**: See which lines are modified, added, or deleted
+- **Drop-in replacement**: Works exactly like `cat` but prettier
+- **Smart features**: Automatic theme switching based on terminal background
+- **File type detection**: Recognizes file types by extension and content
+
+### Tips
+
+- Use `cat` for quick file viewing (no pager interruption)
+- Use `bcat` when viewing long files that benefit from scrolling
+- Bat respects `.gitignore` and shows git changes when inside a git repo
+- Works great with pipes: `rg pattern | cat -l js`
 
 ---
 
@@ -555,6 +607,7 @@ dvprune            # Remove unused volumes
 
 **Most Used Commands**:
 ```
+Bat:     cat <file> bcat <file>
 Eza:     ls ll la lt
 Ripgrep: rg "pattern" -t js -C 2
 Zoxide:  cd <partial> cdi
