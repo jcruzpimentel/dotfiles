@@ -141,6 +141,16 @@ case $OS in
             echo "✓ micro already installed"
         fi
 
+        # Install carapace (multi-shell completion generator)
+        if ! command -v carapace &> /dev/null; then
+            echo "📦 Installing carapace..."
+            cd /tmp
+            curl -sS https://carapace.sh/install.sh | bash
+            cd -
+        else
+            echo "✓ carapace already installed"
+        fi
+
         # Install Homebrew for Linux (optional but recommended)
         if ! command -v brew &> /dev/null; then
             echo "📦 Installing Homebrew for Linux..."
@@ -258,6 +268,16 @@ case $OS in
         else
             echo "✓ micro already installed"
         fi
+
+        # Install carapace (multi-shell completion generator)
+        if ! command -v carapace &> /dev/null; then
+            echo "📦 Installing carapace..."
+            cd /tmp
+            curl -sS https://carapace.sh/install.sh | bash
+            cd -
+        else
+            echo "✓ carapace already installed"
+        fi
         ;;
 
     arch|manjaro)
@@ -366,6 +386,16 @@ case $OS in
             cd -
         else
             echo "✓ micro already installed"
+        fi
+
+        # Install carapace (multi-shell completion generator)
+        if ! command -v carapace &> /dev/null; then
+            echo "📦 Installing carapace..."
+            cd /tmp
+            curl -sS https://carapace.sh/install.sh | bash
+            cd -
+        else
+            echo "✓ carapace already installed"
         fi
         ;;
 

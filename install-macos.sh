@@ -149,6 +149,14 @@ else
     echo "✓ micro already installed"
 fi
 
+# carapace (multi-shell completion generator)
+if ! command -v carapace &> /dev/null; then
+    echo "📦 Installing carapace..."
+    brew install carapace
+else
+    echo "✓ carapace already installed"
+fi
+
 echo ""
 echo "✅ Installation Complete!"
 echo ""

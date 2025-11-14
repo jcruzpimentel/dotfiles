@@ -65,8 +65,16 @@ autoload -Uz compinit && compinit
 # Replay compdefs for performance (must come after compinit)
 zinit cdreplay -q
 
+# carapace - multi-shell completion generator
+# Load AFTER compinit but BEFORE fzf-tab
+if command -v carapace &> /dev/null; then
+    export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+    zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+    source <(carapace _carapace)
+fi
+
 # fzf-tab (replace zsh tab completion with fzf)
-# MUST load AFTER compinit to intercept completions
+# MUST load AFTER compinit and carapace to intercept completions
 zinit light Aloxaf/fzf-tab
 
 # ============================================================================
@@ -84,9 +92,6 @@ zinit snippet OMZP::command-not-found
 
 # Colorizes man pages for better readability
 zinit snippet OMZP::colored-man-pages
-
-# Docker aliases and completions
-zinit snippet OMZP::docker
 
 # ============================================================================
 # Completion Options
