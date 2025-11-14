@@ -21,6 +21,15 @@ ssh/.ssh/authorized_keys
 *~
 .*.swp
 
+# Micro editor temporary files
+micro/.config/micro/buffers/
+micro/.config/micro/bindings.json
+micro/.config/micro/backups/
+*.bak
+
+# Ghostty backup files
+ghostty/.config/ghostty/*.bak
+
 # Local test files
 test_*
 *.local

@@ -40,6 +40,14 @@ else
     echo "✓ Alacritty already installed"
 fi
 
+# Install Ghostty if not already installed
+if ! command -v ghostty &> /dev/null; then
+    echo "👻 Installing Ghostty..."
+    brew install --cask ghostty
+else
+    echo "✓ Ghostty already installed"
+fi
+
 # Install Fantasque Sans Mono Nerd Font
 echo "🔤 Installing Fantasque Sans Mono Nerd Font..."
 if brew list --cask font-fantasque-sans-mono-nerd-font &> /dev/null; then
@@ -125,13 +133,29 @@ else
     echo "✓ btop already installed"
 fi
 
+# atuin (magical shell history)
+if ! command -v atuin &> /dev/null; then
+    echo "📦 Installing atuin..."
+    brew install atuin
+else
+    echo "✓ atuin already installed"
+fi
+
+# micro (modern terminal text editor)
+if ! command -v micro &> /dev/null; then
+    echo "📦 Installing micro..."
+    brew install micro
+else
+    echo "✓ micro already installed"
+fi
+
 echo ""
 echo "✅ Installation Complete!"
 echo ""
 echo "Next steps:"
 echo "1. Deploy dotfiles with GNU Stow:"
 echo "   cd ~/dotfiles"
-echo "   stow zsh ssh alacritty"
+echo "   stow zsh ssh alacritty ghostty"
 echo ""
 echo "2. Customize machine-specific configs:"
 echo "   - Edit ~/.zsh/local.zsh with your SSH keys"
@@ -141,3 +165,5 @@ echo "3. Restart your terminal or run: source ~/.zshrc"
 echo ""
 echo "To change Alacritty theme, edit ~/.config/alacritty/alacritty.toml"
 echo "Available themes: tokyo-night, gruvbox-dark, catppuccin-mocha, dracula, nord, zenbones-zenwritten-dark"
+echo ""
+echo "Ghostty config is located at ~/.config/ghostty/config"

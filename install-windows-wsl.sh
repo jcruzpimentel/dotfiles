@@ -122,6 +122,25 @@ case $OS in
             echo "✓ btop already installed"
         fi
 
+        # Install atuin (magical shell history)
+        if ! command -v atuin &> /dev/null; then
+            echo "📦 Installing atuin..."
+            curl -sS https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh | bash
+        else
+            echo "✓ atuin already installed"
+        fi
+
+        # Install micro (modern terminal text editor)
+        if ! command -v micro &> /dev/null; then
+            echo "📦 Installing micro..."
+            cd /tmp
+            curl -sS https://getmic.ro | bash
+            sudo mv micro /usr/local/bin/
+            cd -
+        else
+            echo "✓ micro already installed"
+        fi
+
         # Install Homebrew for Linux (optional but recommended)
         if ! command -v brew &> /dev/null; then
             echo "📦 Installing Homebrew for Linux..."
@@ -220,6 +239,25 @@ case $OS in
         else
             echo "✓ btop already installed"
         fi
+
+        # Install atuin (magical shell history)
+        if ! command -v atuin &> /dev/null; then
+            echo "📦 Installing atuin..."
+            curl -sS https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh | bash
+        else
+            echo "✓ atuin already installed"
+        fi
+
+        # Install micro (modern terminal text editor)
+        if ! command -v micro &> /dev/null; then
+            echo "📦 Installing micro..."
+            cd /tmp
+            curl -sS https://getmic.ro | bash
+            sudo mv micro /usr/local/bin/
+            cd -
+        else
+            echo "✓ micro already installed"
+        fi
         ;;
 
     arch|manjaro)
@@ -310,6 +348,25 @@ case $OS in
         else
             echo "✓ btop already installed"
         fi
+
+        # Install atuin (magical shell history)
+        if ! command -v atuin &> /dev/null; then
+            echo "📦 Installing atuin..."
+            curl -sS https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh | bash
+        else
+            echo "✓ atuin already installed"
+        fi
+
+        # Install micro (modern terminal text editor)
+        if ! command -v micro &> /dev/null; then
+            echo "📦 Installing micro..."
+            cd /tmp
+            curl -sS https://getmic.ro | bash
+            sudo mv micro /usr/local/bin/
+            cd -
+        else
+            echo "✓ micro already installed"
+        fi
         ;;
 
     *)
@@ -340,14 +397,15 @@ fi
 echo ""
 echo "✅ WSL2 Installation Complete!"
 echo ""
-echo "⚠️  IMPORTANT: Install Alacritty on Windows (not in WSL)"
-echo "   Download from: https://github.com/alacritty/alacritty/releases"
+echo "⚠️  IMPORTANT: Install terminal emulator on Windows (not in WSL)"
+echo "   Alacritty: https://github.com/alacritty/alacritty/releases"
 echo "   Or use winget: winget install Alacritty.Alacritty"
+echo "   Ghostty: https://ghostty.org/download"
 echo ""
 echo "Next steps:"
 echo "1. Deploy dotfiles with GNU Stow:"
 echo "   cd ~/dotfiles"
-echo "   stow zsh ssh alacritty"
+echo "   stow zsh ssh alacritty ghostty"
 echo ""
 echo "2. Customize machine-specific configs:"
 echo "   - Edit ~/.zsh/local.zsh with your SSH keys"
@@ -361,3 +419,5 @@ echo "4. Log out and log back in (or run: zsh) to start using zsh"
 echo ""
 echo "To change Alacritty theme, edit ~/.config/alacritty/alacritty.toml"
 echo "Available themes: tokyo-night, gruvbox-dark, catppuccin-mocha, dracula, nord, zenbones-zenwritten-dark"
+echo ""
+echo "Ghostty config is located at ~/.config/ghostty/config"

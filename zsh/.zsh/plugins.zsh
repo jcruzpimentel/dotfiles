@@ -31,6 +31,12 @@ if command -v zoxide &> /dev/null; then
     fi
 fi
 
+# atuin - magical shell history
+# Load BEFORE oh-my-posh to ensure prompt integration works
+if command -v atuin &> /dev/null; then
+    eval "$(atuin init zsh)"
+fi
+
 # oh-my-posh - prompt theme engine
 if command -v oh-my-posh &> /dev/null; then
     # Use custom theme if it exists, otherwise use default
@@ -124,11 +130,11 @@ zstyle ':fzf-tab:*' fzf-flags --height=60% --border
 # Key Bindings
 # ============================================================================
 
-# History substring search key bindings
-# Bind UP and DOWN arrow keys
-bindkey '^[[A' history-substring-search-up     # Up arrow
-bindkey '^[[B' history-substring-search-down   # Down arrow
+# atuin handles up/down arrow keys automatically when installed
+# If you want to use history-substring-search instead, uncomment below:
+# bindkey '^[[A' history-substring-search-up     # Up arrow
+# bindkey '^[[B' history-substring-search-down   # Down arrow
 
-# Also bind for vi mode
+# Vi mode bindings for history-substring-search (j/k keys)
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down

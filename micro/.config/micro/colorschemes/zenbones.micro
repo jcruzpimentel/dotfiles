@@ -1,0 +1,53 @@
+# Zenbones Zenwritten Dark colorscheme for micro
+# Based on the zenbones color palette
+
+# Color definitions from zenbones-zenwritten-dark
+# Background: #191919
+# Foreground: #bbbbbb
+# Selection: #404040
+# Normal colors:
+#   Black:   #191919  Red:     #de6e7c  Green:   #819b69  Yellow:  #b77e64
+#   Blue:    #6099c0  Magenta: #b279a7  Cyan:    #66a5ad  White:   #bbbbbb
+# Bright colors:
+#   Black:   #3d3839  Red:     #e8838f  Green:   #8bae68  Yellow:  #d68c67
+#   Blue:    #61abda  Magenta: #cf86c1  Cyan:    #65b8c1  White:   #8e8e8e
+
+# Default text
+color-link default "#bbbbbb,#191919"
+color-link comment "#8e8e8e"
+color-link identifier "#61abda"
+color-link constant "#d68c67"
+color-link constant.number "#d68c67"
+color-link constant.string "#8bae68"
+color-link constant.string.char "#8bae68"
+color-link statement "#e8838f"
+color-link symbol "#b279a7"
+color-link symbol.operator "#65b8c1"
+color-link preproc "#cf86c1"
+color-link type "#6099c0"
+color-link special "#66a5ad"
+color-link underlined "underline #61abda"
+color-link error "bold #e8838f"
+color-link todo "bold #d68c67"
+
+# UI elements
+color-link statusline "#bbbbbb,#3d3839"
+color-link tabbar "#bbbbbb,#3d3839"
+color-link indent-char "#3d3839"
+color-link line-number "#8e8e8e,#191919"
+color-link current-line-number "#bbbbbb,#3d3839"
+color-link diff-added "#8bae68"
+color-link diff-modified "#d68c67"
+color-link diff-deleted "#e8838f"
+color-link gutter-error "#e8838f"
+color-link gutter-warning "#d68c67"
+color-link cursor-line "#bbbbbb,#3d3839"
+color-link color-column "#3d3839"
+
+# Selection
+color-link selection "#bbbbbb,#404040"
+
+# Dividers and borders
+color-link divider "#3d3839"
+color-link message "#bbbbbb"
+color-link error-message "bold #e8838f"
