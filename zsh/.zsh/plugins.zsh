@@ -47,20 +47,37 @@ if command -v oh-my-posh &> /dev/null; then
     fi
 fi
 
-# Additional completion definitions
-zinit light zsh-users/zsh-completions
+# Additional completion definitions (defer with turbo mode)
+zinit wait lucid light-mode for \
+    atload"zicompinit; zicdreplay" \
+        zsh-users/zsh-completions
 
-# Fish-like autosuggestions
-zinit light zsh-users/zsh-autosuggestions
+# Fish-like autosuggestions (defer - not needed immediately)
+zinit wait lucid atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20" light-mode for \
+    zsh-users/zsh-autosuggestions
 
-# History substring search (match history by typed prefix)
-zinit light zsh-users/zsh-history-substring-search
+# History substring search (defer - not needed immediately)
+zinit wait lucid light-mode for \
+    zsh-users/zsh-history-substring-search
 
-# Syntax highlighting (load last for best results)
-zinit light zsh-users/zsh-syntax-highlighting
+# Catppuccin Mocha theme for syntax highlighting
+# MUST be sourced BEFORE zsh-syntax-highlighting plugin
+if [ -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh ]; then
+    source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+fi
 
-# Load completions
-autoload -Uz compinit && compinit
+# Syntax highlighting (defer - load last for best results)
+zinit wait lucid light-mode for \
+    zsh-users/zsh-syntax-highlighting
+
+# Load completions with caching
+# Only check cache once per day for faster startup
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+else
+    compinit -C
+fi
 
 # Replay compdefs for performance (must come after compinit)
 zinit cdreplay -q
@@ -78,20 +95,20 @@ fi
 zinit light Aloxaf/fzf-tab
 
 # ============================================================================
-# Oh My Zsh Plugins (OMZP)
+# Oh My Zsh Plugins (OMZP) - Deferred for faster startup
 # ============================================================================
 
 # Git aliases and functions (gst, gco, gp, etc.)
-zinit snippet OMZP::git
+zinit wait lucid for OMZP::git
 
 # Press ESC twice to add sudo to previous command
-zinit snippet OMZP::sudo
+zinit wait lucid for OMZP::sudo
 
 # Suggests package to install when command not found
-zinit snippet OMZP::command-not-found
+zinit wait lucid for OMZP::command-not-found
 
 # Colorizes man pages for better readability
-zinit snippet OMZP::colored-man-pages
+zinit wait lucid for OMZP::colored-man-pages
 
 # ============================================================================
 # Completion Options

@@ -157,13 +157,26 @@ else
     echo "✓ carapace already installed"
 fi
 
+# Install Catppuccin theme for zsh-syntax-highlighting
+echo "🎨 Installing Catppuccin Mocha theme for zsh-syntax-highlighting..."
+CATPPUCCIN_ZSH_DIR="/tmp/catppuccin-zsh-syntax-highlighting"
+if [ ! -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh ]; then
+    git clone https://github.com/catppuccin/zsh-syntax-highlighting.git "$CATPPUCCIN_ZSH_DIR"
+    mkdir -p ~/.zsh
+    cp -v "$CATPPUCCIN_ZSH_DIR/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh" ~/.zsh/
+    rm -rf "$CATPPUCCIN_ZSH_DIR"
+    echo "✓ Catppuccin Mocha theme installed"
+else
+    echo "✓ Catppuccin Mocha theme already installed"
+fi
+
 echo ""
 echo "✅ Installation Complete!"
 echo ""
 echo "Next steps:"
 echo "1. Deploy dotfiles with GNU Stow:"
 echo "   cd ~/dotfiles"
-echo "   stow zsh ssh alacritty ghostty"
+echo "   stow zsh ssh alacritty ghostty bat micro"
 echo ""
 echo "2. Customize machine-specific configs:"
 echo "   - Edit ~/.zsh/local.zsh with your SSH keys"

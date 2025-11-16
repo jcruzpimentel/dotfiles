@@ -9,47 +9,21 @@ font-size = 19
 window-padding-x = 10
 window-padding-y = 10
 window-decoration = true
-background-opacity = 0.85
+background-opacity = 0.90
 background-blur-radius = 20
 
 # Initial window size (columns x rows)
 window-width = 120
 window-height = 30
 
-# Theme: Zenbones Zenwritten Dark
-# Based on your Alacritty theme
-background = 191919
-foreground = bbbbbb
+# Theme Configuration
+# To change themes, uncomment one of the themes below:
+theme = catppuccin-mocha
+# theme = zenbones-zenwritten-dark
 
-# Cursor
-cursor-color = c9c9c9
-cursor-text = 191919
+# Cursor style
 cursor-style = block
 cursor-style-blink = true
-
-# Selection
-selection-foreground = bbbbbb
-selection-background = 404040
-
-# Colors (Normal)
-palette = 0=#191919
-palette = 1=#de6e7c
-palette = 2=#819b69
-palette = 3=#b77e64
-palette = 4=#6099c0
-palette = 5=#b279a7
-palette = 6=#66a5ad
-palette = 7=#bbbbbb
-
-# Colors (Bright)
-palette = 8=#3d3839
-palette = 9=#e8838f
-palette = 10=#8bae68
-palette = 11=#d68c67
-palette = 12=#61abda
-palette = 13=#cf86c1
-palette = 14=#65b8c1
-palette = 15=#8e8e8e
 
 # Shell Configuration
 # macOS/Linux: uses login shell
@@ -57,7 +31,7 @@ shell-integration = zsh
 shell-integration-features = cursor,sudo,title
 
 # Scrollback
-scrollback-limit = 10000
+scrollback-limit = 100000
 
 # Mouse
 mouse-hide-while-typing = true

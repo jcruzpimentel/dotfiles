@@ -1,0 +1,25 @@
+# bat configuration
+# https://github.com/sharkdp/bat
+
+# Show line numbers, Git modifications and file header
+--style="numbers,changes,header"
+
+# Use italic text on the terminal (not supported on all terminals)
+--italic-text=always
+
+# Add mouse scrolling support in less (does not work with all terminals)
+--paging=auto
+
+# Syntax mappings: map a certain filename pattern to a language
+#   Example 1: use the C++ syntax for .ino files
+#   Example 2: Use ".gitignore"-style highlighting for ".ignore" files
+#--map-syntax "*.ino:C++"
+#--map-syntax ".ignore:Git Ignore"
+
+# Show non-printable characters like space, tab, newline, ..
+#--show-all
+
+# Use "gitignore" highlighting for ".ignore" files
+--map-syntax ".ignore:Git Ignore"
+
+--theme="Catppuccin Mocha"
