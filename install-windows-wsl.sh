@@ -41,8 +41,12 @@ case $OS in
         # Install zsh
         if ! command -v zsh &> /dev/null; then
             sudo apt install -y zsh
-            echo "🐚 Setting zsh as default shell..."
-            chsh -s $(which zsh)
+            if [ -z "$SKIP_CHSH" ]; then
+                echo "🐚 Setting zsh as default shell..."
+                chsh -s $(which zsh)
+            else
+                echo "✓ Zsh installed (shell change skipped - will be set by automation)"
+            fi
         else
             echo "✓ Zsh already installed"
         fi
