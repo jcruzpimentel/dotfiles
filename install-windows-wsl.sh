@@ -430,7 +430,11 @@ if [ ! -f "$FONT_DIR/FantasqueSansMNerdFont-Regular.ttf" ]; then
         https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FantasqueSansMono.zip
     unzip -o FantasqueSansMono.zip -d "$FONT_DIR"
     rm FantasqueSansMono.zip
-    fc-cache -fv
+    if command -v fc-cache &> /dev/null; then
+        fc-cache -fv
+    else
+        echo "⚠️  fc-cache not found, skipping font cache rebuild (install fontconfig if needed)"
+    fi
     echo "✓ Font installed"
 else
     echo "✓ Fantasque Sans Mono Nerd Font already installed"
