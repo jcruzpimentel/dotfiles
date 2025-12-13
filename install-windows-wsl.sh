@@ -146,22 +146,30 @@ case $OS in
         fi
 
         # Install carapace (multi-shell completion generator)
-        if ! command -v carapace &> /dev/null; then
-            echo "📦 Installing carapace..."
-            cd /tmp
-            curl -sS https://carapace.sh/install.sh | bash
-            cd -
+        if [ -z "$SKIP_OPTIONAL" ]; then
+            if ! command -v carapace &> /dev/null; then
+                echo "📦 Installing carapace..."
+                cd /tmp
+                curl -sS https://carapace.sh/install.sh | bash
+                cd -
+            else
+                echo "✓ carapace already installed"
+            fi
         else
-            echo "✓ carapace already installed"
+            echo "⏭️  Skipping carapace (optional - set by automation)"
         fi
 
         # Install Homebrew for Linux (optional but recommended)
-        if ! command -v brew &> /dev/null; then
-            echo "📦 Installing Homebrew for Linux..."
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        if [ -z "$SKIP_OPTIONAL" ]; then
+            if ! command -v brew &> /dev/null; then
+                echo "📦 Installing Homebrew for Linux..."
+                /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+            else
+                echo "✓ Homebrew already installed"
+            fi
         else
-            echo "✓ Homebrew already installed"
+            echo "⏭️  Skipping Homebrew (optional - set by automation)"
         fi
         ;;
 
