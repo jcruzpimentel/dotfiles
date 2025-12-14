@@ -68,3 +68,4 @@ fi
 # export EDITOR=vim
 # export VISUAL=vim
 # export LANG=en_US.UTF-8
+export KUBECONFIG=~/gitlab-repos/k3s-cluster-ansible/kubeconfig
